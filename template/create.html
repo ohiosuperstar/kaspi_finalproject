@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block content %}
+    <div>
+        <form method="POST">
+            <div>
+                {{form.currency.label}}
+                {{form.currency}}
+            </div>
+            <div>
+                {{form.submit(class="btn") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

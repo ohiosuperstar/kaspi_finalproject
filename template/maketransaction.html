@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block content %}
+    <div>
+        <form method="POST">
+            <div>
+                {{form.to_account.label}}
+                {{form.to_account}}
+            </div>
+            <div>
+                {{form.amount.label}}
+                {{form.amount}}
+            </div>
+            <div>
+                {{form.submit(class="btn") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

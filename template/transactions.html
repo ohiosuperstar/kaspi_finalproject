@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+{% block content %}
+        <div>
+            <table>
+              <tr>
+                <th>Транзакция #</th>
+                <th>Отправитель</th>
+                <th>Получатель</th>
+                <th>Отправленная сумма</th>
+                <th>Полученная сумма</th>
+                <th>Валюта</th>
+                <th>Статус</th>
+              </tr>
+                {% for record in table %}
+                    <tr>
+                        <td>{{record.id}}</td>
+                        <td>{{record.from_account}}</td>
+                        <td>{{record.to_account}}</td>
+                        <td>{{record.balance_sent}}</td>
+                        <td>{{record.balance_received}}</td>
+                        <td>{{record.currency}}</td>
+                        <td>{{record.status}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+{% endblock content %}
+
+{% block buttons %}
+    <form action="{{ url_for('deposit', accountid=acc_id) }}">
+        <input type="submit" value="Пополнить баланс" />
+    </form>
+
+    <form action="{{ url_for('make_transaction', accountid=acc_id) }}">
+        <input type="submit" value="Сделать перевод" />
+    </form>
+{% endblock buttons %}

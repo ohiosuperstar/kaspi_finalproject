@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+{% block buttons %}
+            <form action="{{ url_for('create_account') }}">
+                <input type="submit" value="Создать счет" />
+            </form>
+{% endblock buttons %}
+{% block content %}
+        <div>
+            <table>
+              <tr>
+                <th>Номер счета</th>
+                <th>Валюта</th>
+                <th>Баланс</th>
+              </tr>
+                {% for record in table %}
+                    <tr>
+                        <td>
+                            <a href="{{ url_for('see_transactions', accountid=record.id) }}">{{record.id}}</a>
+                        </td>
+                        <td>{{record.currency}}</td>
+                        {% if record.balance == tohighlight[record.currency] %}
+                            <td style="background-color: #d6eeee">{{record.balance}}</td>
+                        {% else %}
+                            <td>{{record.balance}}</td>
+                        {% endif %}
+                    </tr>x
+                {% endfor %}
+            </table>
+        </div>
+{% endblock content %}
